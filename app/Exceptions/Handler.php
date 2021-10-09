@@ -57,10 +57,12 @@ class Handler extends ExceptionHandler
                    'messege'=>'the page you are looking for was not found', 
                 ],404);
             }
-            return response()->json([
-                'status'=>'failed',
-                'messege'=>'there is an error in the server', 
-             ],500);
+            if (env('APP_DEBU') === false) {
+                return response()->json([
+                    'status'=>'failed',
+                    'messege'=>'there is an error in the server', 
+                ],500);
+            }
         }
         return parent::render($request, $exception);
     }

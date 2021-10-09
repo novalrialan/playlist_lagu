@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Base\PlaylistSongBaseController;
 use App\Model\Song;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class SongController extends Controller
+class SongController extends PlaylistSongBaseController
 {
     /** fungsi untuk mengambil semua data songs
      * 

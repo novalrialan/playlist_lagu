@@ -18,7 +18,10 @@ use Laravel\Lumen\Routing\Router;
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
-$router->group(['prefix'=>'api/v3'],function ($router){
+
+$router->post('api/v3/login','Auth\LoginController@verify');
+
+$router->group(['prefix'=>'api/v3','middleware'=>'playlistsong.auth'],function ($router){
 
     # to Get All data
     $router->get('/songs','SongController@getAll');
