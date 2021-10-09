@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableUsers extends Migration
+class CreateTablePlaylistsongs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateTableUsers extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('playlistsongs', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('password');
-            $table->enum('role',['superadmin','admin']);
-            $table->string('fullname');
+            $table->foreignId('playlist_id')->constrained('playlists')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('song_id')->constrained('songs')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
+
+    
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateTableUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_users');
+        Schema::dropIfExists('playlistsongs');
     }
 }

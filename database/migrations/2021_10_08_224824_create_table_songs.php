@@ -15,10 +15,10 @@ class CreateTableSongs extends Migration
     {
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title',100);
             $table->year('year');
-            $table->string('artist');
-            $table->enum('gendre',['pop','rock','dangdut','jazz']);
+            $table->string('artist',100);
+            $table->enum('gendre',['pop','rock','jazz','dangdut']);
             $table->time('duration');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateTableSongs extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_songs');
+        Schema::dropIfExists('songs');
     }
 }

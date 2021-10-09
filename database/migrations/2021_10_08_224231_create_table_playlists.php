@@ -16,9 +16,13 @@ class CreateTablePlaylists extends Migration
         Schema::create('playlists', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
         });
+
+        Schema::table('playlists', function(Blueprint $table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade'); 
+         });
     }
 
     /**
@@ -28,6 +32,6 @@ class CreateTablePlaylists extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_playlists');
+        Schema::dropIfExists('playlists');
     }
 }
