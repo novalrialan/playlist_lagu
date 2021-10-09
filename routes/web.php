@@ -23,6 +23,9 @@ $router->post('api/v3/login','Auth\LoginController@verify');
 
 $router->group(['prefix'=>'api/v3','middleware'=>'playlistsong.auth'],function ($router){
 
+    $router->get('/playlists','PlaylistController@getAllName');
+    
+    $router->get('/playlists','PlaylistController@getByUserId');
     # to Get All data
     $router->get('/songs','SongController@getAll');
 

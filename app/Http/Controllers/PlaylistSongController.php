@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
-class PlaylistSongController extends Controller{
+use App\Http\Controllers\Base\PlaylistSongBaseController;
+
+class PlaylistSongController extends PlaylistSongBaseController
+{
     
 }
