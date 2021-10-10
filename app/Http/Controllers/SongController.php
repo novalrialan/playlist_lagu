@@ -41,7 +41,7 @@ class SongController extends PlaylistSongBaseController
             'year'=> 'required|numeric',
             'artist'=> 'required',
             'gendre'=> 'required',
-            'duration'=> 'required|numeric'
+            'duration'=> 'required'
         ]);
         if ($validate->fails()) {
             return $this->failedResponse($validate->errors()->getMessages(),400);
@@ -87,7 +87,6 @@ class SongController extends PlaylistSongBaseController
         $song->save();
         return $this->successResponse(['song'=>$song]);;
     }
-
 
     public function delete($id)
     {

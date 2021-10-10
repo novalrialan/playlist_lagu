@@ -10,9 +10,9 @@ class LoginController extends Controller
 {
     public function verify()
     {
-        $fullname = $_SERVER['PHP_AUTH_USER'];
+        $email = $_SERVER['PHP_AUTH_USER'];
         $password = $_SERVER['PHP_AUTH_PW'];
-        $user = User::loginVerify($fullname,$password);
+        $user = User::loginVerify($email,$password);
         if ($user !== false) {
            $apitoken = Str::random('100');
            $user->api_token = $apitoken;

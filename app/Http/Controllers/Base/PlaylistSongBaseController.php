@@ -10,11 +10,7 @@ abstract class PlaylistSongBaseController extends BaseController
 {
     public function __construct()
     {
-        $token = request()->header('api_token');
-        $user = User::where('api_token','=',$token)->first();
-        if ($user === null) {
-            throw new PlaylistSongNotAuthenticatedException();
-        }
+     
     }
     protected function successResponse(array $data,int $httpCode = 200)
     {

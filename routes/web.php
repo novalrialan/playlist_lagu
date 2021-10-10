@@ -39,5 +39,11 @@ $router->group(['prefix'=>'api/v3','middleware'=>'playlistsong.auth'],function (
     $router->put('/songs/{id}','SongController@update');
 
     #to delete data
-    $router->delete('/songs/{id}','SongController@delete');
+    // $router->delete('/songs/{id}','SongController@delete');
+
+    #single route
+    $router->delete('/songs/{id}',[
+        'middleware'=>'playlistsong.superuser',
+        'uses'=>'SongController@delete'
+    ]);
 });

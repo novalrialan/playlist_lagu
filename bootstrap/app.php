@@ -78,6 +78,7 @@ $app->configure('app');
 
 $app->routeMiddleware([
     'playlistsong.auth' => App\Http\Middleware\PlaylistSongMiddleware::class,
+    'playlistsong.superuser' => App\Http\Middleware\PlaylistSongSuperUserMiddleware::class,
 ]);
 
 /*
