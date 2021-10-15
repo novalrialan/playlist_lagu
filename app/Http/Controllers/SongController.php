@@ -12,7 +12,7 @@ class SongController extends PlaylistSongBaseController
     /** fungsi untuk mengambil semua data songs
      * 
      */
-    public function getAll()
+    public function getAllSong()
     {
 
         $songs = Song::all();
@@ -24,7 +24,7 @@ class SongController extends PlaylistSongBaseController
      * @return jsonresponse
      * */
 
-    public function getById($id)
+    public function getByIdSong($id)
     {
         $song = Song::find($id);
         if ($song === null) {
@@ -33,7 +33,7 @@ class SongController extends PlaylistSongBaseController
         return  $this->successResponse(['song'=>$song]);
     }
 
-    public function create()
+    public function createSong()
     {
         /* validasi */ 
         $validate = Validator::make(request()->all(),[
@@ -62,7 +62,7 @@ class SongController extends PlaylistSongBaseController
      * @return jsonresponse
      * */
 
-    public function update($id)
+    public function updateSong($id)
     {
         $song = Song::find($id);
         if ($song === null) {
@@ -88,7 +88,7 @@ class SongController extends PlaylistSongBaseController
         return $this->successResponse(['song'=>$song]);;
     }
 
-    public function delete($id)
+    public function deleteSong($id)
     {
         $song = Song::find($id);
         if ($song === null) {

@@ -13,10 +13,9 @@ class PlaylistController extends PlaylistSongBaseController
      /** fungsi untuk mengambil semua data playlists
      * 
      */
-    public function getAllPlaylist()
+    public function getAllPlaylist($id)
     {
-
-        $playlits = Playlist::all();
+        $playlits = Playlist::find($id);
         return $this->successResponse(['playlits'=>$playlits]);
     }
     
@@ -25,7 +24,7 @@ class PlaylistController extends PlaylistSongBaseController
      * @return jsonresponse
      * */
 
-    public function getByPlayistId($id)
+    public function getPlayistUserId($id)
     {
         $playlist = Playlist::find($id);
         if ($playlist === null) {
@@ -34,7 +33,7 @@ class PlaylistController extends PlaylistSongBaseController
         return  $this->successResponse(['playlist'=>$playlist]);
     }
 
-    public function create(){
+    public function createPlaylist(){
          /* validasi */ 
          $validate = Validator::make(request()->all(),[
             'name'=> 'required',
@@ -45,7 +44,7 @@ class PlaylistController extends PlaylistSongBaseController
         }
         $playlist = new Playlist();
         $playlist->name = request('name');
-        $playlist->user_id = request('user_id');
+        $playlist->id_user = request();
         $playlist->save();
         return $this->successResponse(['playlist'=>$playlist],201);
     }

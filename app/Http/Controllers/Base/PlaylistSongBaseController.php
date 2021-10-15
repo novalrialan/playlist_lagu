@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Base;
 
-use App\Exceptions\PlaylistSongNotAuthenticatedException;
 use Laravel\Lumen\Routing\Controller as BaseController;
-use App\Model\User;
 
 abstract class PlaylistSongBaseController extends BaseController
 {

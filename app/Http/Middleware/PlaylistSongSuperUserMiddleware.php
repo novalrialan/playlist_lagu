@@ -9,7 +9,7 @@ class PlaylistSongSuperUserMiddleware
 {
     public function handle($request, Closure $next)
     {
-        if($request->fullname->role !== 'superuser') {
+        if($request->email->role !== 'superuser') {
         throw new PlaylistSongNotAuthorizedException();
         }
         return $next($request);

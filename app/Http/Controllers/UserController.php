@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\PlaylistSongNotAuthorizedException;
 use App\Http\Controllers\Base\PlaylistSongBaseController;
 use App\Model\User;
 use Illuminate\Support\Facades\Validator;
@@ -29,15 +28,16 @@ class UserController extends PlaylistSongBaseController
         return $this->successResponse(['user'=>$user]);
     }
 
-    public function create()
+    public function createUser()
     {
+        
         /* validasi */ 
         $validasi = Validator::make(request()->all(),[
             'email' => 'required',
             'password' =>'required',
             'api_token' => 'required',
             'role' => 'required',
-            'fullname' => 'required' 
+            'fullname' => 'required', 
         ]);
         if ($validasi->fails()) {
             return $this->failedResponse($validasi->errors()->getMessages(),400);
@@ -84,4 +84,5 @@ class UserController extends PlaylistSongBaseController
         return $this->successResponse(['user'=>'user has been deleted successfully']);
     }
 
+    
 }
