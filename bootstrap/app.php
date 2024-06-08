@@ -8,6 +8,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 date_default_timezone_set(env('APP_TIMEZONE', 'Asia/Jakarta'));
 
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -78,6 +79,7 @@ $app->configure('app');
 
 $app->routeMiddleware([
     'playlistsong.auth' => App\Http\Middleware\PlaylistSongMiddleware::class,
+    'playlistsong.superuser' => App\Http\Middleware\PlaylistSongSuperUserMiddleware::class,
 ]);
 
 /*

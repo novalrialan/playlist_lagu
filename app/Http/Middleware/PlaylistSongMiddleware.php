@@ -28,7 +28,7 @@ class PlaylistSongMiddleware
             throw new PlaylistSongNotAuthenticatedException();
         }
         # kondisi ketika api_tokennya ada
-        $request->fullname = $user;
+        $request->email = $user;
         return $next($request);
     }
 }
